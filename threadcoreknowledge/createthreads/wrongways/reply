@@ -1,0 +1,2 @@
+这几种方式其实底层都是Thread类或者Runnable接口的方式，并不是属于多的创建方式
+创建线程的方式一共就两种: Runnable接口和ThreadStyle。具体看腾讯文档
