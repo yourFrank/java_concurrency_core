@@ -1,4 +1,4 @@
-package threadcoreknowledge.stopthreads;
+package threadcoreknowledge.stopthreads.wrongways;
 
 /**
  * 描述：     错误的停止方法：用stop()来停止线程，会导致线程运行一半突然停止，没办法完成一个基本单位的操作（一个连队），会造成脏数据（有的连队多领取少领取装备）。
@@ -13,7 +13,7 @@ public class StopThread implements Runnable {
             for (int j = 0; j < 10; j++) {
                 System.out.println(j);
                 try {
-                    Thread.sleep(50);
+                    Thread.sleep(50);//这里模拟每一个领取的过程中会有一定的延迟
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -26,7 +26,7 @@ public class StopThread implements Runnable {
         Thread thread = new Thread(new StopThread());
         thread.start();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(1000);//突然接到命令，此时不能领取了
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

@@ -1,8 +1,7 @@
-package threadcoreknowledge.stopthreads.volatiledemo;
+package threadcoreknowledge.stopthreads.wrongways.volatiledemo;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.ConcurrentLinkedQueue;
 
 /**
  * 描述：     演示用volatile的局限part2 陷入阻塞时，volatile是无法线程的 此例中，生产者的生产速度很快，消费者消费速度慢，所以阻塞队列满了以后，生产者会阻塞，等待消费者进一步消费
@@ -30,6 +29,7 @@ public class WrongWayVolatileCantStop {
     }
 }
 
+//生产者实现runnable接口，不断生产数据。
 class Producer implements Runnable {
 
     public volatile boolean canceled = false;
@@ -45,9 +45,9 @@ class Producer implements Runnable {
     public void run() {
         int num = 0;
         try {
-            while (num <= 100000 && !canceled) {
+            while (num <= 100000 && !canceled) { //这里想的是使用canceled进行判断，如果消费者不需要了就设置为true，停止生产
                 if (num % 100 == 0) {
-                    storage.put(num); //会在put这里阻塞住
+                    storage.put(num); //然而会在put这里阻塞住
                     System.out.println(num + "是100的倍数,被放到仓库中了。");
                 }
                 num++;
@@ -68,6 +68,7 @@ class Consumer {
         this.storage = storage;
     }
 
+    //这里模拟消费者是否还需要的方法，这里Math.random()会随机取一个小于1的数，当大于0.95就不需要消费了，就返回false
     public boolean needMoreNums() {
         if (Math.random() > 0.95) {
             return false;

@@ -1,11 +1,11 @@
-package threadcoreknowledge.stopthreads.volatiledemo;
+package threadcoreknowledge.stopthreads.wrongways.volatiledemo;
 
 /**
  * 描述：     演示用volatile的局限：part1 看似可行
  */
 public class WrongWayVolatile implements Runnable {
 
-    private volatile boolean canceled = false;
+    private volatile boolean canceled = false; //volatile可以让多个线程看到它，内存可见性，后续会讲到
 
     @Override
     public void run() {

@@ -14,7 +14,7 @@ public class RunThrowException {
             @Override
             public void run()  {
                 try {
-                    throw new Exception();
+                    throw new Exception(); //比如这里出现了异常，只能try/catch，不能throw了
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

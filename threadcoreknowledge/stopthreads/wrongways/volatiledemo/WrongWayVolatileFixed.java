@@ -1,4 +1,4 @@
-package threadcoreknowledge.stopthreads.volatiledemo;
+package threadcoreknowledge.stopthreads.wrongways.volatiledemo;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
@@ -23,7 +23,6 @@ public class WrongWayVolatileFixed {
             Thread.sleep(100);
         }
         System.out.println("消费者不需要更多数据了。");
-
 
         producerThread.interrupt();
     }

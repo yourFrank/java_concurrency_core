@@ -4,7 +4,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 /**
- * 描述：     定时器创建线程
+ * 描述：     定时器创建线程 ,每隔一秒打印线程的名字
  */
 public class DemoTimmerTask {
 

@@ -21,7 +21,7 @@ public class RightWayStopThreadWithoutSleep implements Runnable {
     public static void main(String[] args) throws InterruptedException {
         Thread thread = new Thread(new RightWayStopThreadWithoutSleep());
         thread.start();
-        Thread.sleep(2000);//让main线程等两秒，此时RightWayStopThreadWithoutSleep线程还在继续跑
+        Thread.sleep(1000);//让main线程等1秒，此时RightWayStopThreadWithoutSleep线程还在继续跑
         thread.interrupt();//两秒后此时请求RightWayStopThreadWithoutSleep中断
     }
 }

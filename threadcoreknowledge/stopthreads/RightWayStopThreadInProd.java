@@ -11,7 +11,7 @@ public class RightWayStopThreadInProd implements Runnable {
     public void run() {
 //        !Thread.currentThread().isInterrupted()如果有sleep方法，还是会清除，因此这个判断没用
         while (true && !Thread.currentThread().isInterrupted()) {
-            System.out.println("go");
+            System.out.println("正常的业务逻辑处理....");
             try {
                 //调用别人的方法
                 throwInMethod();
